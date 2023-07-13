@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Dict, Optional,Union
 
 import torch
 
@@ -17,7 +17,7 @@ from gfn.losses import (
 
 def trajectories_to_training_samples(
     trajectories: Trajectories, loss_fn: Loss
-) -> States | Transitions | Trajectories:
+) -> Union[States, Transitions, Trajectories]:
     """Converts a Trajectories container to a States, Transitions or Trajectories container,
     depending on the loss.
     """

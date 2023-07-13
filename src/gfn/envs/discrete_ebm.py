@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import ClassVar, Literal, Tuple, cast
-
+from typing import ClassVar, Tuple, cast
+from typing_extensions import Literal
 import torch
 import torch.nn as nn
 from gymnasium.spaces import Discrete
@@ -46,7 +46,7 @@ class DiscreteEBMEnv(Env):
     def __init__(
         self,
         ndim: int,
-        energy: EnergyFunction | None = None,
+        energy = None,
         alpha: float = 1.0,
         device_str: Literal["cpu", "cuda"] = "cpu",
     ):
@@ -78,11 +78,11 @@ class DiscreteEBMEnv(Env):
 
         super().__init__(action_space=action_space, s0=s0, sf=sf)
 
-    def make_States_class(self) -> type[States]:
+    def make_States_class(self):
         env = self
 
         class DiscreteEBMStates(States):
-            state_shape: ClassVar[tuple[int, ...]] = (env.ndim,)
+            state_shape = (env.ndim,)
             s0 = env.s0
             sf = env.sf
 

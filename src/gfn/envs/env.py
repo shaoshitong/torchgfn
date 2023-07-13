@@ -52,7 +52,7 @@ class Env(ABC):
         self.preprocessor = preprocessor
 
     @abstractmethod
-    def make_States_class(self) -> type[States]:
+    def make_States_class(self):
         "Returns a class that inherits from States and implements the environment-specific methods."
         pass
 

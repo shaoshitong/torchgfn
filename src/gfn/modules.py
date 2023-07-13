@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Literal, Optional
+from typing import Optional
+from typing_extensions import Literal
 
 import torch
 import torch.nn as nn

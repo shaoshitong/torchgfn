@@ -2,7 +2,8 @@
 Copied and Adapted from https://github.com/Tikquuss/GflowNets_Tutorial
 """
 
-from typing import ClassVar, Literal, Tuple, cast
+from typing import ClassVar, Tuple, cast
+from typing_extensions import Literal
 
 import torch
 from einops import rearrange
@@ -97,19 +98,19 @@ class HyperGrid(Env):
             preprocessor=preprocessor,
         )
 
-    def make_States_class(self) -> type[States]:
+    def make_States_class(self):
         "Creates a States class for this environment"
         env = self
 
         class HyperGridStates(States):
 
-            state_shape: ClassVar[tuple[int, ...]] = (env.ndim,)
+            state_shape = (env.ndim,)
             s0 = env.s0
             sf = env.sf
 
             @classmethod
             def make_random_states_tensor(
-                cls, batch_shape: Tuple[int, ...]
+                cls, batch_shape
             ) -> StatesTensor:
                 "Creates a batch of random states."
                 states_tensor = torch.randint(

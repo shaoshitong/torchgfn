@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Tuple, Literal
+from typing import Tuple
+from typing_extensions import Literal
 import inspect
 
 import torch

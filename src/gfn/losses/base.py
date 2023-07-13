@@ -124,7 +124,7 @@ class TrajectoryDecomposableLoss(Loss, ABC):
         temperature: float = 1.0,
         epsilon=0.0,
         no_pf: bool = False,
-    ) -> Tuple[LogPTrajectoriesTensor | None, LogPTrajectoriesTensor]:
+    ) -> Tuple[LogPTrajectoriesTensor, LogPTrajectoriesTensor]:
         """Evaluate log_pf and log_pb for each action in each trajectory in the batch.
         This is useful when the policy used to sample the trajectories is different from the one used to evaluate the loss.
 
@@ -141,7 +141,7 @@ class TrajectoryDecomposableLoss(Loss, ABC):
             ValueError: if the trajectories are backward.
 
         Returns:
-            Tuple[LogPTrajectoriesTensor | None, LogPTrajectoriesTensor]: A tuple of float tensors of shape (max_length, n_trajectories) containing the log_pf and log_pb for each action in each trajectory. The first one can be None.
+            Tuple[LogPTrajectoriesTensor, LogPTrajectoriesTensor]: A tuple of float tensors of shape (max_length, n_trajectories) containing the log_pf and log_pb for each action in each trajectory. The first one can be None.
         """
         # fill value is the value used for invalid states (sink state usually)
         if trajectories.is_backward:

@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 import os
-from typing import TYPE_CHECKING, Literal
+from typing import TYPE_CHECKING
+from typing_extensions import Literal
 
 from gfn.containers.states import States
 from gfn.containers.trajectories import Trajectories

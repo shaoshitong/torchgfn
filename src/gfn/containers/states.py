@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from abc import ABC
-from math import prod
 from typing import ClassVar, Sequence, cast
 
 import torch
@@ -17,6 +16,11 @@ DonesTensor = TensorType["batch_shape", torch.bool]
 RewardsTensor = TensorType["batch_shape", torch.float]
 OneStateTensor = TensorType["state_shape", torch.float]
 
+def prod(iterable):
+    result = 1
+    for n in iterable:
+        result *= n
+    return result
 
 def correct_cast(
     forward_masks: ForwardMasksTensor | None,

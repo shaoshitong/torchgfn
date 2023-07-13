@@ -1,8 +1,6 @@
-from typing import Literal
-
+from typing_extensions import Literal
 import pytest
 import torch
-
 from gfn.containers import Trajectories
 from gfn.containers.replay_buffer import ReplayBuffer
 from gfn.envs import DiscreteEBMEnv, HyperGrid

@@ -46,7 +46,7 @@ class DiscreteActionsSampler(ActionsSampler):
 
     def __init__(
         self,
-        estimator: LogitPFEstimator | LogEdgeFlowEstimator,
+        estimator,
         temperature: float = 1.0,
         sf_bias: float = 0.0,
         epsilon: float = 0.0,
